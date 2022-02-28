@@ -142,11 +142,75 @@ class Array{
         }
     }
 
+    void interface(){
+        int choice=0, item, index;
+
+        while(choice != -1){
+            cout<<"1) Traversal\n";
+            cout<<"2) Min\n";
+            cout<<"3) Max\n";
+            cout<<"4) ArgMin\n";
+            cout<<"5) ArgMax\n";
+            cout<<"6) Reverse\n";
+            cout<<"7) Count All Occurances of a number\n";
+            cout<<"8) Update a value at an index\n";
+            cout<<"9) Rotate\n";
+            cout<<"-1) Exit\n";
+            cout<<"Enter your choice: ";
+            cin>>choice;
+
+            switch(choice){
+                case 1:
+                        traverse();
+                        break;
+
+                case 2:
+                        cout<<"Minimum value is" << min() << endl;
+                        break;
+
+                case 3:
+                        cout<<"Maximum value is" << max() << endl;
+                        break;
+
+                case 4:
+                        cout<<argmin()<<endl;
+                        break;
+                
+                case 5:
+                        cout<<argmax()<<endl;
+                        break;
+                
+                case 6:
+                        reverse();
+                        break;
+
+                case 7: 
+                        cout<<"Enter a number to find: ";
+                        cin>>item;
+                        countAllOccurancesOf(item);
+                        break;
+
+                case 8:
+                        cout<<"Enter index to update: ";
+                        cin>>index;
+                        cout<<"Enter value to update";
+                        cin>>item;
+                        update(item, index);
+
+                case 9:
+                        cout<<"Enter number of times to rotate left: ";
+                        cin>>item;
+                        rotate(item);
+
+                default:
+                        cout<<"Invalid choice!";
+            }
+        }
+    }
+
 };
 
 int main(){
-
-    
 
     return 0;
 }
