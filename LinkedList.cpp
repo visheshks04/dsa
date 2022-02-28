@@ -1,10 +1,11 @@
 #include <iostream>
+#include <climits>
 
 using std::cout;
 using std::cin;
 using std::endl;
 
-class LinkedList{
+class SinglyLinkedList{
 
     struct Node{
         int data;
@@ -68,7 +69,32 @@ class LinkedList{
     }
 
     void insertAtIndex(int item, int index){
-        //TODO
+
+        if(head == NULL){
+            head = new Node;
+            head->data = item;
+            return;
+        }
+
+        if(index == 0){
+            Node *temp = new Node;
+            temp->data = item;
+            temp->next = head;
+            head = temp;
+            return;
+        }        
+
+        int i=1;
+        Node *temp = head;
+        while(i!=index){
+            temp = temp->next;
+            i++;
+        }
+
+        Node *create = new Node;
+        create->data = item;
+        create->next = temp->next;
+        temp->next = create;
     }
 
     void deleteFromHead(){
@@ -106,10 +132,38 @@ class LinkedList{
     }
 
     void deleteAtIndex(int index){
-        //TODO
+
+        if (head == NULL){
+            cout<<"Underflow!";
+            return;
+        }
+
+        if(index == 0){
+            Node *temp = head;
+            head = head->next;
+            delete temp;
+            return;
+        }
+
+        int i=1;
+        Node *temp = head;
+        while(i!=index){
+            temp = temp->next;
+            i++;
+        }
+
+        Node *del = temp->next;
+        temp = temp->next;
+        delete del;
     }
     
     void traverse(){
+
+        if(head == NULL){
+            cout<<"Empty List.";
+            return;
+        }
+
         Node *temp = head;
 
         while(temp->next == NULL){
@@ -120,7 +174,48 @@ class LinkedList{
         cout<<"NULL\n";
     }
 
-    ~LinkedList(){
+    int min(){
+
+        if(head == NULL){
+            cout<<"Empty List.";
+            return;
+        }
+
+        Node *temp = head;
+        int min = INT_MAX;
+
+        while(temp->next == NULL){
+            if(min > temp->data){
+                min = temp->data;
+            }
+
+            temp = temp->next;
+        }
+
+        return min;
+    }
+
+    int max(){
+
+        if(head == NULL){
+            cout<<"Empty List.";
+            return;
+        }
+
+        Node *temp = head;
+        int max = INT_MIN;
+
+        while(temp->next == NULL){
+            if(max < temp->data){
+                max = temp->data;
+            }
+            temp = temp->next;
+        }
+
+        return max;
+    }
+
+    ~SinglyLinkedList(){
         Node *temp = head;
 
         while(temp->next = NULL){
@@ -193,6 +288,21 @@ class LinkedList{
     }
 
 };
+
+
+
+class DoublyLinkedList{
+    struct Node{
+        int data;
+        Node* next;
+        Node* prev;
+    }*head;
+
+    
+
+};
+
+
 
 int main(){
     return 0;
