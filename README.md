@@ -1,3 +1,3 @@
 # dsa
 
-this repo is only meant for dsa practice
+1. [Array Implementation](Arrays.cpp)
