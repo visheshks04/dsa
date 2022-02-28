@@ -99,14 +99,54 @@ class Array{
         }
     }
 
+    void update(int num, int index){
 
+        if(index>currentSize-1 || index<0)
+            return;
 
+        arr[index] = num;
+    }
+
+    void rotate(int n){
+
+        char side = 'l';
+        if (n > currentSize / 2){
+            n = currentSize - n;
+            side = 'r';
+        }
+
+        int temp;
+
+        switch (side){
+        case 'l':
+            while (n--)
+            {
+                temp = arr[0];
+                for (int i = 0; i < currentSize - 1; i++)
+                {
+                    arr[i] = arr[i+1];
+                }
+                arr[currentSize-1] = temp;
+            }
+            break;
+        case 'r':
+            while (n--)
+            {
+                temp = arr[currentSize - 1];
+                for (int i = currentSize - 1; i > 0; i--)
+                {
+                    arr[i] = arr[i-1];
+                }
+                arr[0] = temp;
+            }
+        }
+    }
 
 };
 
 int main(){
 
-
+    
 
     return 0;
 }
