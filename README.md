@@ -7,9 +7,9 @@
 2. [Singly Linked List](LinkedList.cpp#L8)
     * [Insertion from Head](LinkedList.cpp#L17)
     * [Insertion from Tail](LinkedList.cpp#L41)
-    * [Insertion from Head](LinkedList.cpp#L71)
-    * [Insertion from Head](LinkedList.cpp#L100)
-    * [Insertion from Head](LinkedList.cpp#L112)
-    * [Insertion from Head](LinkedList.cpp#L134)
+    * [Insertion at an Index](LinkedList.cpp#L71)
+    * [Deletion from Head](LinkedList.cpp#L100)
+    * [Deletion from Tail](LinkedList.cpp#L112)
+    * [Deletion at an Index](LinkedList.cpp#L134)
 
 3. [Doubly Linked List](LinkedList.cpp#L294)
