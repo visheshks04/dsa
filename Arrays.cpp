@@ -30,6 +30,14 @@ class Array{
         MAX = a.MAX;
     }
 
+    void insert(int index, int value){
+
+    }
+
+    void del(int index){
+
+    }
+
     void traverse(){
         for(int i=0;i<currentSize;i++){
             cout<<arr[i]<<"\t";
@@ -97,6 +105,8 @@ class Array{
             if(arr[i] == x)
                 count++;
         }
+
+        return count;
     }
 
     void update(int num, int index){
@@ -146,61 +156,81 @@ class Array{
         int choice=0, item, index;
 
         while(choice != -1){
-            cout<<"1) Traversal\n";
-            cout<<"2) Min\n";
-            cout<<"3) Max\n";
-            cout<<"4) ArgMin\n";
-            cout<<"5) ArgMax\n";
-            cout<<"6) Reverse\n";
-            cout<<"7) Count All Occurances of a number\n";
-            cout<<"8) Update a value at an index\n";
-            cout<<"9) Rotate\n";
+            cout<<"1) Insert at an index\n";
+            cout<<"2) Delete from an index\n";
+            cout<<"3) Traversal\n";
+            cout<<"4) Min\n";
+            cout<<"5) Max\n";
+            cout<<"6) ArgMin\n";
+            cout<<"7) ArgMax\n";
+            cout<<"8) Reverse\n";
+            cout<<"9) Count All Occurances of a number\n";
+            cout<<"10) Update a value at an index\n";
+            cout<<"11) Rotate\n";
             cout<<"-1) Exit\n";
             cout<<"Enter your choice: ";
             cin>>choice;
 
             switch(choice){
+
                 case 1:
-                        traverse();
+                        cout<<"Enter the index to insert on: ";
+                        cin>>index;
+                        cout<<"Enter the number to insert: ";
+                        cin>>item;
+                        insert(index, item);
                         break;
 
                 case 2:
-                        cout<<"Minimum value is" << min() << endl;
+                        cout<<"Enter the index to delete from: ";
+                        cin>>index;
+                        del(index);
                         break;
 
+
                 case 3:
-                        cout<<"Maximum value is" << max() << endl;
+                        traverse();
                         break;
 
                 case 4:
+                        cout<<"Minimum value is" << min() << endl;
+                        break;
+
+                case 5:
+                        cout<<"Maximum value is" << max() << endl;
+                        break;
+
+                case 6:
                         cout<<argmin()<<endl;
                         break;
                 
-                case 5:
+                case 7:
                         cout<<argmax()<<endl;
                         break;
                 
-                case 6:
+                case 8:
                         reverse();
                         break;
 
-                case 7: 
+                case 9: 
                         cout<<"Enter a number to find: ";
                         cin>>item;
                         countAllOccurancesOf(item);
                         break;
 
-                case 8:
+                case 10:
                         cout<<"Enter index to update: ";
                         cin>>index;
                         cout<<"Enter value to update";
                         cin>>item;
                         update(item, index);
+                        break;
 
-                case 9:
+                case 11:
                         cout<<"Enter number of times to rotate left: ";
                         cin>>item;
                         rotate(item);
+                        break;
 
                 default:
                         cout<<"Invalid choice!";
@@ -211,6 +241,9 @@ class Array{
 };
 
 int main(){
+
+    Array a;
+    a.interface();
 
     return 0;
 }
