@@ -134,6 +134,7 @@ class StackLL{
             }
             top->data = item;
             top->next = NULL;
+            return;
         }
 
         Node *temp = new Node;
