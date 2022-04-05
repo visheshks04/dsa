@@ -432,7 +432,7 @@ int Array::binarySearch(int value){
 void Array::selectionSort(){
     int min = 0;
     for(int i=0;i<currentSize;i++){
-        for(int j=0;j<currentSize;j++){{
+        for(int j=0;j<currentSize;j++){
             if(arr[min] > arr[j]){
                 min = j;
             }
@@ -440,7 +440,6 @@ void Array::selectionSort(){
         int temp = arr[min];
         arr[min] = arr[i];
         arr[i] = temp;
-    }
     }
 }
 
@@ -473,7 +472,6 @@ void Array::insertionSort(){
                 break;
             }
         }
-
         arr[j] = key;
     }
 }
@@ -482,7 +480,13 @@ void Array::merge(){
 
 }
 
-void Array::mergeSort(){
+void Array::mergeSort(int *ar, int l, int h){
+
+    if(l<r){
+        int m = (l+h)/2;
+        mergeSort(l, m+1);
+
+    }
     
 }
 

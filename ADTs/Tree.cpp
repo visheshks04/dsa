@@ -39,17 +39,17 @@ class BinaryTree{
 
     public:
 
-    BinaryTree(){
-        cout<<"Enter data for the root: ";
-        root = NULL;
-        createTree(&root);
-    }
+    // BinaryTree(){
+    //     cout<<"Enter data for the root: ";
+    //     root = NULL;
+    //     createTree(&root);
+    // }
 
     Node* getRoot(){
         return root;
     }
 
-    void inorderTraversal(Node* root){
+    static void inorderTraversal(Node* root){
         if(root == NULL){
             return;
         }
@@ -59,7 +59,7 @@ class BinaryTree{
         inorderTraversal(root -> right);
     }
 
-    void preorderTraversal(Node* root){
+    static void preorderTraversal(Node* root){
         if(root == NULL){
             return;
         }
@@ -68,7 +68,7 @@ class BinaryTree{
         preorderTraversal(root -> right);
     }
 
-    void postorderTraversal(Node* root){
+    static void postorderTraversal(Node* root){
         if(root == NULL){
             return;
         }
@@ -83,7 +83,7 @@ class BinaryTree{
      * isExtendedBinaryTree
      */
 
-    int depth(Node* root){
+    static int depth(Node* root){
         if(root == NULL){
             return 0;
         }
@@ -91,7 +91,7 @@ class BinaryTree{
         return 1 + max(depth(root->left), depth(root->right));
     }
 
-    int zeroChildCount(Node* root){
+    static int zeroChildCount(Node* root){
         if(root == NULL){
             return 0;
         }
@@ -104,7 +104,7 @@ class BinaryTree{
     }
 
 
-    bool isExtendedBinary(Node* root){
+    static bool isFullBinary(Node* root){
 
         if(root->left == NULL && root->right == NULL)
             return true;
@@ -112,14 +112,13 @@ class BinaryTree{
         if(root->left == NULL || root->right == NULL)
             return false;
 
-        return isExtendedBinary(root->left) && isExtendedBinary(root->right);
+        return isFullBinary(root->left) && isFullBinary(root->right);
     }
 
     /**
      *      5 
      *    6   8
      *   7     9
-     * 
      */
 
     // bool isCompleteBinary(Node* root){
@@ -134,35 +133,76 @@ class BinaryTree{
 
 
 
-// class BST : public BinaryTree{
+class BST{
 
-//     protected:
+    public:
 
-//     void createTree(Node** root, int key){
+    struct Node{
+        int data;
+        Node* left;
+        Node* right;
+    }*root;
 
-//         start:
+    Node* createNode(int data){
+        Node *newNode = new Node;
+        if(newNode == NULL){
+            cout<<"Overflow!\n";
+            return NULL;
+        }
+        newNode -> data = data;
+        return newNode;
+    }
 
-//         int data;
-//         cin>>data;
+    BST(){
+        root = NULL;
+    }
 
-//         if(data == -1){
-//             return;
-//         }
+    BST(int rootItem){
+        root = createNode(rootItem);
+    }
 
-//         else if()
+    void _insertNode(Node** root, int item){
 
-//         (*root) = createNode(data);
-//         cout<<"Enter data for left of "<<data<<": ";
-//         createTree(&(*root) -> left);
-//         cout<<"Enter data for right of "<<data<<": ";
-//         createTree(&(*root) -> right);
-//     }
-// };
+        if(*root == NULL){
+            *root = createNode(item);
+        }
+
+        else if((*root)->data >= item){
+            _insertNode(&(*root)->left, item);
+        }
+
+        else{
+            _insertNode(&(*root)->right, item);
+        }
+    }
+
+    void insertNode(Node* root, int item){
+        _insertNode(&root, item);
+    }
+
+    Node* getRoot(){
+        return root;
+    }
+
+    static void inorderTraversal(Node* root){
+        if(root == NULL){
+            return;
+        }
+
+        inorderTraversal(root -> left);
+        cout<<root->data<<" ";
+        inorderTraversal(root -> right);
+    }
+
+};
 
 
 
 int main(){
-    BinaryTree bt;
-    cout<<bt.isExtendedBinary(bt.getRoot());
+    BST bst;
+    bst.insertNode(bst.getRoot(), 5);
+    bst.insertNode(bst.getRoot(), 6);
+    bst.insertNode(bst.getRoot(), 4);
+    bst.inorderTraversal(bst.getRoot());
     return 0;
 }
