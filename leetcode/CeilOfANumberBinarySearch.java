@@ -44,7 +44,7 @@ public class CeilOfANumberBinarySearch{
 			lo = mid+1;
 		}
 	}
-	return mid;
+	return lo;
     }
 
     // Largest number smaller than or equal to target
@@ -66,6 +66,6 @@ public class CeilOfANumberBinarySearch{
 			lo = mid+1;
 		}
 	}
-	return mid-1;
+	return hi;
     }
 }
