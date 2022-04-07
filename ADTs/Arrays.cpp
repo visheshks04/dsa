@@ -432,7 +432,7 @@ int Array::binarySearch(int value){
 void Array::selectionSort(){
     int min = 0;
     for(int i=0;i<currentSize;i++){
-        for(int j=0;j<currentSize;j++){
+        for(int j=i;j<currentSize;j++){
             if(arr[min] > arr[j]){
                 min = j;
             }
@@ -445,14 +445,21 @@ void Array::selectionSort(){
 
 void Array::bubbleSort(){
 
+    bool sorted;
+
     for(int i=0;i<currentSize;i++){
-        for(int j=0;j<currentSize-1;j++){
+	sorted = true;
+        for(int j=0;j<currentSize-i-1;j++){
             if(arr[j] > arr[j+1]){
                 int temp = arr[j];
                 arr[j] = arr[j+1];
                 arr[j+1] = temp;
+		sorted = false;
             }
         }
+	if (sorted){
+	    break;
+	}
     }
 }
 
